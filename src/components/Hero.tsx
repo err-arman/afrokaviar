@@ -10,7 +10,7 @@ type SlideButton = {
 
 const HERO_SLIDES = [
   {
-    img: "./../../public/hero_bg_image.PNG",
+    img: "/hero_bg_image.PNG",
     heading: "Welcome to Afrokaviar",
     logo: "/afrokaviar.png",
     subheading: "Your Gateway to Unique Afro Cinema",
@@ -22,7 +22,7 @@ const HERO_SLIDES = [
     ],
   },
   {
-    img: "./../../public/hero_bg_image.PNG",
+    img: "/hero_bg_image.PNG",
     heading: "Discover Live African Channels",
     logo: "/afrokaviar.png",
     subheading: "Stream Live African Channels",
@@ -34,7 +34,7 @@ const HERO_SLIDES = [
     ],
   },
   {
-    img: "./../../public/hero_bg_image.PNG",
+    img: "/hero_bg_image.PNG",
     heading: "Submit Your Vision",
     logo: "/afrokaviar.png",
     subheading: "Bring Your Project to Life",
