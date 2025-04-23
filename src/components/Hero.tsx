@@ -10,7 +10,7 @@ type SlideButton = {
 
 const HERO_SLIDES = [
   {
-    img: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-4.0.3&w=800",
+    img: "./../../public/hero_bg_image.PNG",
     heading: "Welcome to Afrokaviar",
     logo: "/afrokaviar.png",
     subheading: "Your Gateway to Unique Afro Cinema",
@@ -22,24 +22,24 @@ const HERO_SLIDES = [
     ],
   },
   {
-    img: "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?ixlib=rb-4.0.3&w=800",
-    heading: "Welcome to Afrokaviar",
+    img: "./../../public/hero_bg_image.PNG",
+    heading: "Discover Live African Channels",
     logo: "/afrokaviar.png",
-    subheading: "Your Gateway to Unique Afro Cinema",
-    description:
-      "Discover the rich diversity of Afro-European films and series, carefully curated for global audiences.",
+    subheading: "Stream Live African Channels",
+    description: `News, Culture & Entertainment – Straight from the Source
+ Dive into real-time stories from across the continent. From Senegal to South Africa, tune into voices that shape modern Africa.`,
     buttons: [
       { label: "Watch TV", variant: "default", href: "#" },
       { label: "Submit your project", variant: "outline", href: "#" },
     ],
   },
   {
-    img: "https://images.unsplash.com/photo-1485846234645-a62644f84728?ixlib=rb-4.0.3&w=800",
-    heading: "Welcome to earth",
+    img: "./../../public/hero_bg_image.PNG",
+    heading: "Submit Your Vision",
     logo: "/afrokaviar.png",
-    subheading: "Your Gateway to Unique Afro Cinema",
-    description:
-      "Discover the rich diversity of Afro-European films and series, carefully curated for global audiences.",
+    subheading: "Bring Your Project to Life",
+    description: `Your Ideas. Our Platform. Global Reach.
+ Submit your film, docuseries, or show idea and connect with a network of Afro-Global creators, funders, and viewers.`,
     buttons: [
       { label: "Watch TV", variant: "default", href: "#" },
       { label: "Submit your project", variant: "outline", href: "#" },
@@ -116,7 +116,7 @@ export default function Hero() {
                       asChild={!!btn.href}
                       className={
                         btn.variant === "default"
-                          ? "bg-[#7A3EF3] hover:bg-[#009A31] text-white px-8 py-6 rounded-xl text-lg"
+                          ? "bg-[#6B46C1] hover:bg-[#00D154] text-white px-8 py-6 rounded-xl text-lg"
                           : "border-white text-white bg-white/5 hover:bg-white/20 px-8 py-6 rounded-xl text-lg"
                       }
                       variant={btn.variant as any}
@@ -171,7 +171,7 @@ export default function Hero() {
             key={index}
             onClick={() => scrollTo(index)}
             className={`w-2 h-2 rounded-full transition-all duration-200 ${
-              selectedIndex === index ? "bg-[#7A3EF3]" : "bg-green-700"
+              selectedIndex === index ? "bg-[#6B46C1]" : "bg-[#00D154]"
             }`}
             aria-label={`Go to slide ${index + 1}`}
           />

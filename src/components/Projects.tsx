@@ -48,7 +48,7 @@ function SubmitCard() {
         </CardDescription>
       </CardContent>
       <CardFooter className="pt-4">
-        <Button className="w-full bg-[#7A3EF3] hover:bg-[#009A31] text-white py-6 rounded-xl text-lg">
+        <Button className="w-full bg-[#6B46C1] hover:bg-[#00D154] text-white py-6 rounded-xl text-lg">
           Submit Your Project
         </Button>
       </CardFooter>
