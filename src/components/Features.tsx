@@ -10,7 +10,7 @@ interface FeatureProps {
 function FeatureItem({ icon, title, description, className }: FeatureProps) {
   return (
     <div className={`flex flex-col items-center text-center ${className}`}>
-      <div className="bg-[#FFB800] w-14 h-14 rounded-full flex items-center justify-center mb-4 text-white">
+      <div className="bg-yellow-500 w-14 h-14 rounded-full flex items-center justify-center mb-4 text-white">
         {icon}
       </div>
       <h3 className="text-xl font-bold mb-2">{title}</h3>
@@ -21,9 +21,9 @@ function FeatureItem({ icon, title, description, className }: FeatureProps) {
 
 export default function Features() {
   return (
-    <section className="py-20  bg-white">
-      <div className="container mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-5 gap-8 lg:gap-4">
+    <section className="py-20 bg-white">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
           <FeatureItem
             icon={
               <svg
@@ -41,7 +41,6 @@ export default function Features() {
             }
             title="Cultural Focus"
             description="Every story is rooted in African identity, tradition, and pride."
-            className="md:col-span-2 lg:col-span-1"
           />
 
           <FeatureItem
@@ -61,8 +60,7 @@ export default function Features() {
             }
             title="Creator Support"
             description="We fund and elevate underrepresented voices with tools and partnerships."
-            className="md:col-span-2 lg:col-span-1"
-        />
+          />
 
           <FeatureItem
             icon={
@@ -80,7 +78,6 @@ export default function Features() {
               </svg>
             }
             title="Exclusive Content"
-            className="md:col-span-2 lg:col-span-1"
             description="Original films, series, and docs crafted for and by our community."
           />
 
@@ -99,7 +96,6 @@ export default function Features() {
                 />
               </svg>
             }
-            className="md:col-start-2 md:col-span-2 lg:col-span-1"
             title="Smart Discovery"
             description="AI-driven recommendations spotlight relevant, inspiring content."
           />
@@ -119,7 +115,6 @@ export default function Features() {
                 />
               </svg>
             }
-            className="md:col-start-3 md:col-span-2 lg:col-span-1"
             title="Cultural Innovation"
             description="Merging storytelling with tech to spark a global creative revolution."
           />
