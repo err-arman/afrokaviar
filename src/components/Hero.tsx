@@ -12,36 +12,37 @@ const HERO_SLIDES = [
   {
     img: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-4.0.3&w=800",
     heading: "Welcome to Afrokaviar",
-    logo: '/afrokaviar.png',
+    logo: "/afrokaviar.png",
     subheading: "Your Gateway to Unique Afro Cinema",
-    description: "Discover the rich diversity of Afro-European films and series, carefully curated for global audiences.",
+    description:
+      "Discover the rich diversity of Afro-European films and series, carefully curated for global audiences.",
     buttons: [
-      { label: "Start Your Free Trial", variant: "default", href: "#" },
-      { label: "Sign In", variant: "outline", href: "#" },
+      { label: "Watch TV", variant: "default", href: "#" },
+      { label: "Submit your project", variant: "outline", href: "#" },
     ],
   },
   {
     img: "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?ixlib=rb-4.0.3&w=800",
     heading: "Welcome to Afrokaviar",
-    logo: '/afrokaviar.png',
+    logo: "/afrokaviar.png",
     subheading: "Your Gateway to Unique Afro Cinema",
     description:
       "Discover the rich diversity of Afro-European films and series, carefully curated for global audiences.",
     buttons: [
-      { label: "Continue", variant: "default", href: "#" },
-      { label: "Sign In", variant: "outline", href: "#" },
+      { label: "Watch TV", variant: "default", href: "#" },
+      { label: "Submit your project", variant: "outline", href: "#" },
     ],
   },
   {
     img: "https://images.unsplash.com/photo-1485846234645-a62644f84728?ixlib=rb-4.0.3&w=800",
     heading: "Welcome to earth",
-    logo: '/afrokaviar.png',
+    logo: "/afrokaviar.png",
     subheading: "Your Gateway to Unique Afro Cinema",
     description:
       "Discover the rich diversity of Afro-European films and series, carefully curated for global audiences.",
     buttons: [
-      { label: "Join Now", variant: "default", href: "#" },
-      { label: "Sign in", variant: "outline", href: "#" },
+      { label: "Watch TV", variant: "default", href: "#" },
+      { label: "Submit your project", variant: "outline", href: "#" },
     ],
   },
 ];
@@ -89,13 +90,13 @@ export default function Hero() {
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-300"
                 style={{
                   backgroundImage: `url(${slide.img})`,
-                  filter: "brightness(0.5)",
+                  filter: "brightness(0.3)",
                 }}
               />
               <div className="container relative z-10 text-center px-4 max-w-2xl mx-auto h-full flex flex-col justify-center">
                 {/* added image here */}
-                <img 
-                  src={slide.logo} 
+                <img
+                  src={slide.logo}
                   alt={slide.heading}
                   className="w-80 h-14 mx-auto mb-10"
                 />
@@ -120,11 +121,15 @@ export default function Hero() {
                       }
                       variant={btn.variant as any}
                     >
-                      {btn.href ? <a href={btn.href}>{btn.label}</a> : btn.label}
+                      {btn.href ? (
+                        <a href={btn.href}>{btn.label}</a>
+                      ) : (
+                        btn.label
+                      )}
                     </Button>
                   ))}
                 </div>
-                </div>
+              </div>
             </div>
           ))}
         </div>
