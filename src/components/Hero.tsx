@@ -18,7 +18,7 @@ const HERO_SLIDES = [
       "Discover the rich diversity of Afro-European films and series, carefully curated for global audiences.",
     buttons: [
       { label: "Watch TV", variant: "default", href: "#" },
-      { label: "Submit your project", variant: "outline", href: "#" },
+      { label: "Submit your project", variant: "outline", href: "/submit-project" },
     ],
   },
   {
