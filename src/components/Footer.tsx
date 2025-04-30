@@ -1,5 +1,5 @@
 
-import { Facebook, Twitter, Youtube } from 'lucide-react';
+import { Facebook, Twitter, Youtube , X} from 'lucide-react';
 import { Separator } from './ui/separator';
 
 export default function Footer() {
@@ -9,8 +9,10 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Legal Column */}
           <div>
-            <h3 className="text-xl font-bold mb-6">Legal</h3>
+            <h3 className="text-xl font-bold mb-6">Menu</h3>
             <ul className="space-y-3">
+              <li><a href="/" className="text-gray-400 hover:text-white transition-colors">Home</a></li>
+              <li><a href="/submit-project" className="text-gray-400 hover:text-white transition-colors">Submit your project</a></li>
               <li><a href="#" className="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
               <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Terms of Use</a></li>
               <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Privacy</a></li>
@@ -22,7 +24,7 @@ export default function Footer() {
             <h3 className="text-xl font-bold mb-6">Follow Us</h3>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <Twitter size={24} />
+                <X size={24} />
                 <span className="sr-only">Twitter</span>
               </a>
               <a href="#" className="text-gray-400 hover:text-white transition-colors">

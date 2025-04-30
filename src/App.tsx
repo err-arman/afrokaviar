@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import SubmitProject from "./pages/submit-project/submit-project";
+import WatchTv from "./pages/watch-tv/WatchTv";
 
 const queryClient = new QueryClient();
 
@@ -20,6 +21,7 @@ const App = () => (
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
           <Route path="/submit-project" element={<SubmitProject />} />
+          <Route path="/watch-tv" element={<WatchTv />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>

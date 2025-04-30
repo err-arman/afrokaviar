@@ -17,7 +17,7 @@ const HERO_SLIDES = [
     description:
       "Discover the rich diversity of Afro-European films and series, carefully curated for global audiences.",
     buttons: [
-      { label: "Watch TV", variant: "default", href: "#" },
+      { label: "Watch TV", variant: "default", href: "/watch-tv" },
       { label: "Submit your project", variant: "outline", href: "/submit-project" },
     ],
   },
@@ -29,8 +29,8 @@ const HERO_SLIDES = [
     description: `News, Culture & Entertainment – Straight from the Source
  Dive into real-time stories from across the continent. From Senegal to South Africa, tune into voices that shape modern Africa.`,
     buttons: [
-      { label: "Watch TV", variant: "default", href: "#" },
-      { label: "Submit your project", variant: "outline", href: "#" },
+      { label: "Watch TV", variant: "default", href: "/watch-tv" },
+      { label: "Submit your project", variant: "outline", href: "/submit-project" },
     ],
   },
   {
@@ -41,8 +41,8 @@ const HERO_SLIDES = [
     description: `Your Ideas. Our Platform. Global Reach.
  Submit your film, docuseries, or show idea and connect with a network of Afro-Global creators, funders, and viewers.`,
     buttons: [
-      { label: "Watch TV", variant: "default", href: "#" },
-      { label: "Submit your project", variant: "outline", href: "#" },
+      { label: "Watch TV", variant: "default", href: "/watch-tv" },
+      { label: "Submit your project", variant: "outline", href: "/submit-project" },
     ],
   },
 ];
