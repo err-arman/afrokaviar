@@ -17,6 +17,11 @@ export function VideoPlayer({ streamUrl }: { streamUrl: string }) {
   }, [streamUrl]);
 
   return (
-    <video ref={videoRef} controls autoPlay className="w-full h-auto rounded-lg shadow-lg" />
+    <video
+      ref={videoRef}
+      controls
+      autoPlay
+      className="w-full h-auto rounded-lg shadow-lg"
+    />
   );
 }

@@ -1,85 +1,59 @@
-import React, { useEffect, useState } from "react";
-import Hls from "hls.js";
+import { useEffect, useMemo, useState } from "react";
 import { VideoPlayer } from "@/components/VideoPlayer/VideoPlayer";
-import { parseM3U } from "@/components/Utility/ParseM3u";
 import logo from "/afrokaviar.png";
 import Footer from "@/components/Footer";
 import { Loader } from "lucide-react";
-import { useToast } from "@/components/ui/use-toast";
+import useFetchTvChannels from "@/hooks/useFetchTvChannels";
 
 export default function WatchTv() {
-  const { toast } = useToast();
-  const [channels, setChannels] = useState<any[]>([]);
   const [displayedChannels, setDisplayedChannels] = useState<any[]>([]);
   const [visibleCount, setVisibleCount] = useState(20);
   const [selectedChannel, setSelectedChannel] = useState<any>(null);
-  const [loading, setLoading] = useState(false);
-
   const [search, setSearch] = useState("");
   const [group, setGroup] = useState("All");
 
-  const fetchChannels = async () => {
-    setLoading(true);
-    try {
-      const response = await fetch(import.meta.env.VITE_TV_CHANNEL_API);
-      const text = await response.text();
+  // custom hook
+  const { channels, loading } = useFetchTvChannels();
 
-      const parsed = parseM3U(text);
-      const filteredChannels = parsed
-        .filter((channel) => channel.group !== "Undefined")
-        .map((channel) => ({
-          ...channel,
-          // Take only the first category before semicolon
-          group: channel.group.split(";")[0].trim(),
-        }));
-      setChannels(filteredChannels);
-      setLoading(false);
-    } catch (error) {
-      setLoading(true);
-      toast({
-        color: "red",
-        title: "Something went wrong",
-        description: "Please try again later.",
+  const handleScroll = () => {
+    if (
+      window.innerHeight + window.scrollY >=
+      document.body.offsetHeight - 500
+    ) {
+      setVisibleCount((prev) => {
+        const newCount = prev + 20;
+        return newCount;
       });
-      console.error("Error fetching channels:", error);
     }
   };
 
-  useEffect(() => {
-    fetchChannels();
-  }, []);
+  const filtered = useMemo(() => {
+    return channels?.length
+      ? channels.filter(
+          (c) =>
+            (group === "All" || c.channel_group === group) &&
+            c.channel_name.toLowerCase().includes(search.toLowerCase())
+        )
+      : [];
+  }, [channels, group, search]);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (
-        window.innerHeight + window.scrollY >=
-        document.body.offsetHeight - 500
-      ) {
-        setVisibleCount((prev) => {
-          const newCount = prev + 20;
-          return newCount;
-        });
-      }
-    };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const filtered =
-    channels?.length &&
-    channels?.filter((c) => {
-      return (
-        (group === "All" || c.group === group) &&
-        c.name.toLowerCase().includes(search.toLowerCase())
-      );
-    });
-
   useEffect(() => {
-    if (filtered) setDisplayedChannels(filtered.slice(0, visibleCount));
+    if (filtered?.length) {
+      setDisplayedChannels(filtered.slice(0, visibleCount));
+    } else {
+      setDisplayedChannels([]);
+    }
   }, [filtered, visibleCount]);
 
-  const uniqueGroups = ["All", ...new Set(channels.map((c) => c.group))];
+  const uniqueGroups = [
+    "All",
+    ...new Set(channels.map((c) => c.channel_group)),
+  ];
 
   return (
     <div className="bg-black text-white min-h-screen flex flex-col">
@@ -153,15 +127,15 @@ export default function WatchTv() {
             {displayedChannels?.map((channel, index) => (
               <div
                 key={index}
-                onClick={() => setSelectedChannel(channel)}
+                onClick={() => setSelectedChannel(channel.channel_url)}
                 className="relative group cursor-pointer rounded-lg overflow-hidden bg-gray-800"
               >
                 <img
                   src={
-                    channel.logo ||
-                    "https://via.placeholder.com/400x200?text=No+Logo"
+                    channel.logo_url ||
+                    "https://img.freepik.com/premium-vector/tv-channel-button-logo-design-vector-template_567288-1201.jpg"
                   }
-                  alt={channel.name}
+                  alt={channel.channel_name}
                   className="w-full h-40 object-cover group-hover:opacity-80"
                 />
                 <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition">
@@ -174,8 +148,12 @@ export default function WatchTv() {
                   </svg>
                 </div>
                 <div className="p-3">
-                  <h2 className="text-white font-semibold">{channel.name}</h2>
-                  <p className="text-sm text-gray-400">{channel.group}</p>
+                  <h2 className="text-white font-semibold">
+                    {channel.channel_name}
+                  </h2>
+                  <p className="text-sm text-gray-400">
+                    {channel.channel_group}
+                  </p>
                 </div>
               </div>
             ))}
@@ -192,7 +170,7 @@ export default function WatchTv() {
             >
               ← Back to channels
             </button>
-            <VideoPlayer streamUrl={selectedChannel.url} />
+            <VideoPlayer streamUrl={selectedChannel} />
           </div>
         </div>
       )}
