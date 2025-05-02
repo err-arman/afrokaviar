@@ -131,12 +131,9 @@ export default function WatchTv() {
                 className="relative group cursor-pointer rounded-lg overflow-hidden bg-gray-800"
               >
                 <img
-                  src={
-                    channel.logo_url ||
-                    "https://img.freepik.com/premium-vector/tv-channel-button-logo-design-vector-template_567288-1201.jpg"
-                  }
+                  src={channel.logo_url || "/tv_thamb.png"}
                   alt={channel.channel_name}
-                  className="w-full h-40 object-cover group-hover:opacity-80"
+                  className="w-full h-40 group-hover:opacity-80"
                 />
                 <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition">
                   <svg
