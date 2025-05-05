@@ -133,7 +133,7 @@ export default function WatchTv() {
                 <img
                   src={channel.logo_url || "/tv_thamb.png"}
                   alt={channel.channel_name}
-                  className="w-full h-40 group-hover:opacity-80"
+                  className="w-full h-40 object-cover group-hover:opacity-80"
                 />
                 <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition">
                   <svg
@@ -145,12 +145,17 @@ export default function WatchTv() {
                   </svg>
                 </div>
                 <div className="p-3">
-                  <h2 className="text-white font-semibold">
-                    {channel.channel_name}
-                  </h2>
-                  <p className="text-sm text-gray-400">
-                    {channel.channel_group}
-                  </p>
+                  <div className="flex justify-between">
+                    <div>
+                      <h2 className="text-white font-semibold">
+                        {channel.channel_name}
+                      </h2>
+                      <p className="text-sm text-gray-400">
+                        {channel.channel_group}
+                      </p>
+                    </div>
+                    <p className="text-sm mt-auto text-white">{channel.country}</p>
+                  </div>
                 </div>
               </div>
             ))}
