@@ -37,6 +37,25 @@ export default function WatchTv() {
       : [];
   }, [channels, group, search]);
 
+  const getGoogleDriveImageUrl = (url: string) => {
+    if (!url) return "/tv_thamb.png";
+    console.log("url", url);
+    // Check if it's a Google Drive URL
+    if (url.includes("drive.google.com")) {
+      // Extract the file ID from the URL
+      // This regex handles both /file/d/ and /uc?id= formats
+      const fileId =
+        url.match(/\/file\/d\/([^/]+)/)?.[1] || url.match(/id=([^&]+)/)?.[1];
+
+      if (fileId) {
+        // Convert to direct download link
+        return `https://drive.google.com/uc?export=view&id=${fileId}`;
+      }
+    }
+    console.log("url", url);
+    return url;
+  };
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -54,6 +73,10 @@ export default function WatchTv() {
     "All",
     ...new Set(channels.map((c) => c.channel_group)),
   ];
+
+  useEffect(() => {
+    if (displayedChannels) console.log("displayedChannels", displayedChannels);
+  }, [displayedChannels]);
 
   return (
     <div className="bg-black text-white min-h-screen flex flex-col">
@@ -131,7 +154,10 @@ export default function WatchTv() {
                 className="relative group cursor-pointer rounded-lg overflow-hidden bg-gray-800"
               >
                 <img
-                  src={channel.logo_url || "/tv_thamb.png"}
+                  src={'https://drive.google.com/file/d/1Q8BlT5AA0mWEooSjXCsncj4WIEfFyHE1/view'}
+                  // onError={(e) => {
+                  //   (e.target as HTMLImageElement).src = "/tv_thamb.png";
+                  // }}
                   alt={channel.channel_name}
                   className="w-full h-40 object-cover group-hover:opacity-80"
                 />
@@ -154,7 +180,9 @@ export default function WatchTv() {
                         {channel.channel_group}
                       </p>
                     </div>
-                    <p className="text-sm mt-auto text-white">{channel.country}</p>
+                    <p className="text-sm mt-auto text-white">
+                      {channel.country}
+                    </p>
                   </div>
                 </div>
               </div>
