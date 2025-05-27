@@ -154,7 +154,7 @@ export default function WatchTv() {
                 className="relative group cursor-pointer rounded-lg overflow-hidden bg-gray-800"
               >
                 <img
-                  src={'https://drive.google.com/file/d/1Q8BlT5AA0mWEooSjXCsncj4WIEfFyHE1/view'}
+                  src="/tv_thamb.png"
                   // onError={(e) => {
                   //   (e.target as HTMLImageElement).src = "/tv_thamb.png";
                   // }}
